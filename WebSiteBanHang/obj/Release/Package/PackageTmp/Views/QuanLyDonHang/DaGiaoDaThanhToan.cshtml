@@ -1,0 +1,75 @@
+﻿@using WebSiteBanHang.Models;
+@model IEnumerable<DonDatHang>
+@{
+    ViewBag.Title = "Đã giao và thanh toán";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 20);
+}
+
+
+<ul class="nav nav-tabs">
+    <li role="presentation" class="nav-item">
+        <a class="nav-link " href="@Url.Action("ChuaThanhToan", "QuanLyDonHang")">Chưa thanh toán</a>
+    </li>
+    <li role="presentation" class="nav-item">
+        <a class="nav-link " href="@Url.Action("ChuaGiao", "QuanLyDonHang")">Chưa giao & đã thanh toán</a>
+    </li>
+    <li role="presentation" class="nav-item">
+        <a class="nav-link active" href="@Url.Action("DaGiaoDaThanhToan", "QuanLyDonHang")">Đã giao đã thanh toán</a>
+    </li>
+</ul>
+
+
+<br />
+@grid.GetHtml(
+    tableStyle: "divTable",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAltRow",
+    columns: grid.Columns(
+    grid.Column("MaDDH", header: "Mã đơn hàng"),
+    grid.Column("MaKH", header: "Họ tên KH", format: p => p.MaKH != null ? p.KhachHang.TenKH : ""),
+    grid.Column("NgayDat", header: "Ngày đặt"),
+    grid.Column("TinhTrangGiaoHang", header: "Tình trạng giao hàng"),
+    grid.Column("NgayGiao", header: "Ngày giao"),
+    grid.Column("DaThanhToan", header: "Đã thanh toán"),
+    grid.Column("UuDai", header: "Ưu đãi"),
+    grid.Column("DaHuy", header: "Đã hủy"),
+    grid.Column(format: p => Html.ActionLink("Duyệt đơn hàng", "DuyetDonHang", new { id = p.MaDDH }, new { @target = "_blank" }))
+
+        ))
+
+
+
+<style>
+    .divTable {
+        border: 1px solid #999999;
+        width: 98%;
+        margin: 0 auto;
+    }
+    .divTable td {
+        border: 1px solid #999999;
+    }
+
+    .gridHead {
+        background-color: green;
+    }
+
+    .gridHead > th > a {
+            color: #fff;
+    }
+
+    .gridFooter {
+        font-weight: bold;
+    }
+
+   @* .gridRow {
+        color: #fff;
+        background-color: blueviolet;
+    }
+    .gridAltRow {
+        color: #fff;
+        background-color: darkorange;
+    }*@
+</style>

@@ -1,0 +1,26 @@
+﻿@using WebSiteBanHang.Models;
+@model Quyen
+@{
+    ViewBag.Title = "ThemQuyen";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<h2>Thêm quyền</h2>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <div class="col-md-12">
+            <span>Mã quyền</span>
+            <input type="text" name="MaQuyen" value="" />
+        </div>
+        <div class="col-md-12 my-2">
+            <span>Tên quyền</span>
+            <input type="text" name="TenQuyen" value="" />
+        </div>
+        <input type="submit" class="btn btn-success px-3 mx-3" value="Thêm" />
+    </div>
+
+
+}
+
+@Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-primary mx-3" });

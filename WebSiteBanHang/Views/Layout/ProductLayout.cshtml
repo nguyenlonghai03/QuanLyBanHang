@@ -1,0 +1,256 @@
+﻿<html>
+<head>
+    <title>Ecommerce Dynamic Web Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta http-equiv="Content-Language" content="en-US">
+    <meta name="description" content="Dynamic responsive Ecommerce free web template">
+    <meta name="keywords" content="Ecommerce template, Ecommerce free responsive template, free template">
+    <meta name="author" content="Maniruzzaman Akash">
+
+    <!-- CSS links -->
+    <link type="text/css" rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+
+
+    <!-- Animate.css -->
+    <link type="text/css" rel="stylesheet" href="~/Content/css/animate.css">
+
+    <!-- Owl Carousel CSS-->
+    <link type="text/css" rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <link type="text/css" rel="stylesheet" href="~/Content/css/owl.theme.default.min.css">
+
+    <!-- Single Page product show with zoom -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/flexslider.css">
+
+    <!-- Mega navigation bar -->
+    <link rel="stylesheet" type="text/css" media="all" href="~/Content/css/webslidemenu.css">
+
+    <!-- Main css link -->
+    <link type="text/css" rel="stylesheet" href="~/Content/css/main.css">
+    <link rel="icon" href="~/Content/images/logo.png">
+  
+
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Header part  -->
+        <div class="header">
+            <!-- Start Top Header -->
+            <div class="top-header">
+                <div class="top-header-left pull-left">
+                    <a href="products.html">Upto 50% Discount today</a>
+                </div>
+                <div class="top-header-right pull-right">
+                    <div class="container-fluid">
+                        <ul>
+                            <li class="top-header-list">
+                                <div class="dropdown">
+                                    <a class="link dropdown-toggle pointer" id="menu1" data-toggle="dropdown">
+                                        <span class="icon"><i class="fa fa-user"></i></span>
+                                        My Account
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Orders</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Wallets</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="top-header-list">
+                                <a href="#">
+                                    <span class="icon"><i class="fa fa-credit-card"></i></span>
+                                    Credit Card
+                                </a>
+                            </li>
+                            <li class="top-header-list">
+                                <a href="#">
+                                    <span class="icon"><i class="fa fa-question-circle"></i></span>
+                                    Helps
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!-- End Top Header -->
+            <!-- Start Header Main, logo, search bar,cart -->
+            <div class="header-bottom">
+                <div class="container" style="display: flex !important">
+                    <div class="header-logo pull-left">
+                        <a href="index.html">
+                            <img src="~/Content/images/logo.png" alt="Your Shop Logo" class="img img-responsive">
+                        </a>
+                    </div>
+
+                    <div class="header-search pull-left">
+                        @*<form action="#" method="post">*@
+                        @using(Html.BeginForm("LayTuKhoaTimKiem", "TimKiem")){ 
+                            <input type="search" name="sTuKhoa" placeholder="Search for a Product..." required="">
+                            <button type="submit" class="btn btn-default" aria-label="Left Align">
+                                <i class="fa fa-search" aria-hidden="true"> </i>
+                            </button>
+                        }
+                        @*</form>*@
+                    </div>
+
+                    @*<div class="header-cart">
+                            <a href="#" class="cart-link" data-toggle="modal" data-target="#cart-item"><i class="fa fa-cart-arrow-down"></i></a>
+                            <span class="number-of-cart">20</span>
+                        </div>*@
+
+                    @*Chèn partial view giỏ hàng vào layout (Tách icon giỏ hàng sang 1 partial View mới)*@
+                    @Html.Action("GioHangPartial", "GioHang")
+
+
+
+
+                    <!-- Cart Modal -->
+                    <!-- End Model -->
+
+                </div>
+            </div>
+            <!-- End Header Main, logo, search bar,cart -->
+
+
+
+
+
+            <div class="header-navigation sticky-top">
+                <div class="wsmenucontainer clearfix">
+                    <div class="overlapblackbg"></div>
+                    <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a class="smallogo"><img src="images/logo.png" alt=""></a> <a class="callusicon" href="tel:123456789"><span class="fa fa-phone"></span></a> </div>
+
+
+                    <div class="headerfull">
+                        <!--Main Menu HTML Code-->
+                        @Html.Action("MenuPartial", "Home")
+                        <!--Menu HTML Code-->
+                    </div>
+                </div>
+
+            </div>  <!-- End Navigation header -->
+
+        </div>
+        <!-- Header part  -->
+
+        @RenderBody()
+
+
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="footer-top-address wow slideInLeft" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10" style="visibility: visible; animation-duration: 1s; animation-delay: 0s; animation-name: slideInLeft;">
+                            <div class="header-logo" style=" text-align: center;border-bottom: 1px dotted rgba(247, 12, 38, 0.24);">
+                                <a href="index.html">
+                                    <img src="images/logo.png" alt="Your Shop Logo" class="img img-responsive">
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+                            <ul>
+                                <li><i class="fa fa-map-marker"></i> Patuakhali Science &amp; Technology University, Dumki-8602, Patuakhali</li>
+                                <li><i class="fa fa-mobile"></i> +8801951233084 </li>
+                                <li><i class="fa fa-phone"></i> +222 11 4444 </li>
+                                <li><i class="fa fa-envelope-o"></i> <a href="mailto:manirujjamanakash@gmail.com"> manirujjamanakash@gmail.com</a></li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="subscribe wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10" style="visibility: visible; animation-duration: 1s; animation-delay: 0s; animation-name: slideInRight;">
+                            <h3>Subscribe here to get some exciting offers</h3>
+                            <form action="#" method="post">
+                                <input type="text" name="email" placeholder="Enter your Email..." required="">
+                                <input type="submit" value="Subscribe">
+                            </form>
+                        </div>
+                        <div class="all-footer-links">
+                            <div class="col-md-4">
+                                <h3>Company</h3>
+                                <ul>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="marketplace.html">Marketplace</a></li>
+                                    <li><a href="values.html">Core Values</a></li>
+                                    <li><a href="privacy.html">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 footer-grids">
+                                <h3>Services</h3>
+                                <ul>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="login.html">Returns</a></li>
+                                    <li><a href="faq.html" class="link">FAQ</a></li>
+                                    <li><a href="sitemap.html">Site Map</a></li>
+                                    <li><a href="login.html">Order Status</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 footer-grids">
+                                <h3>Payment Methods</h3>
+                                <ul>
+                                    <li><i class="fa fa-paypal" aria-hidden="true"></i> Paypal</li>
+                                    <li><i class="fa fa-money" aria-hidden="true"></i> Bkash</li>
+                                    <li><i class="fa fa-pie-chart" aria-hidden="true"></i>EMI Conversion</li>
+                                    <li><i class="fa fa-gift" aria-hidden="true"></i> E-Gift Voucher</li>
+                                    <li><i class="fa fa-credit-card" aria-hidden="true"></i> Debit/Credit Card</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="payment-links">
+                            <ul>
+                                <li><i class="fa fa-cc-paypal" style="color: #FFCC80"></i></li>
+                                <li><i class="fa fa-cc-mastercard" style="color: #FFEB3B"></i></li>
+                                <li><i class="fa fa-cc-stripe" style="color: yellow"></i></li>
+                                <li><i class="fa fa-credit-card" style="color: #FF9800"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-credit">
+                ©2017 - All rights reserved <a href="index.html">Your shop</a> | Designed by <a href="https://maniruzzaman-akash.blogspot.com"> Maniruzzaman Akash </a>
+            </p>
+        </div>
+
+        <div class="scroll">
+            <a href="#top" class="scroll-to-top slideInRight animated slideOutRight" style="display: none;">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </div>
+
+    </div> <!-- End wrapper -->
+    <!-- Scripts -->
+    <script type="text/javascript" src="~/Content/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/owl.carousel.min.js"></script>
+
+    <script src="~/Content/js/jquery.flexslider.js" type="text/javascript"></script>
+    <script>
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
+        });
+    </script>
+    <!--flex slider-->
+    <script src="~/Content/js/imagezoom.js" type="text/javascript"></script>
+
+    <script src="~/Content/js/wow.min.js"></script>
+
+    <script type="text/javascript" src="~/Content/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/webslidemenu.js"></script>
+    <script type="text/javascript" src="~/Content/js/main.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+</body>
+</html>

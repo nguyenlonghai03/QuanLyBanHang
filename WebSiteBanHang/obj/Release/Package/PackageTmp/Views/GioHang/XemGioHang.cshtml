@@ -1,0 +1,194 @@
+﻿@using WebSiteBanHang.Models;
+@model List<ItemGioHang>
+@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+
+@if (Model == null || Model.Count == 0)
+{
+    <h1>Giỏ hàng rỗng</h1>
+}
+else
+{
+    <div class="content-area">
+        <div class="container">
+            <div class="cart-page">
+                <h2>Cart</h2>
+                @using (Html.BeginForm("DatHang", "GioHang"))
+                {
+                    <div class="clearfix"></div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Sản phẩm</th>
+                                <th width="10%">Số lượng</th>
+                                <th width="20%">Đơn giá</th>
+                                <th width="20%">Thành tiền</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@Url.Content("~/Content/images/product-slide/" + item.HinhAnh)" width="50" alt="" class="img img-thumbnail pull-left">
+                                        <span class="pull-left cart-product-option">
+
+                                            <strong>@item.TenSP</strong><br>
+
+                                            <input type="hidden" name="product_id" value="1">
+                                            @*<input type="submit" class="btn btn-red btn-sm" name="" value="Remove Item">*@
+                                            @Html.ActionLink("Sửa", "SuaGioHang", new { @MaSP = item.MaSP })
+                                            @Html.ActionLink("Xóa", "XoaGioHang", new { @MaSP = item.MaSP })
+
+
+                                        </span>
+                                        <div class="clearfix"></div>
+                                    </td>
+                                    <td><input type="number" min="1" name="product_quantity_p1" value="@item.SoLuong" class="form-control product_quantity_p1"></td>
+                                    <td>@item.DonGia $</td>
+                                    <td><p class="total_ammount_p1">@item.ThanhTien $</p></td>
+                                </tr>
+                            }
+
+                            <tr>
+                                <td></td>
+                                <td colspan="1"><strong>Total:</strong></td>
+                                <td></td>
+                                <td>
+                                    <p><span class="total_product_sum">1600$</span></p>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                @*<td colspan="4">
+                                <a href="checkout.html" class="btn btn-yellow btn-lg pull-right margin-bottom-20"> Đặt hàng </a>
+                                <a href="products.html" class="btn btn-success btn-lg pull-right margin-right-20">
+                                    <i class="fa fa-plus"></i> Add More Products
+                                </a>
+
+                                <div class="clearfix"></div>
+                            </td>*@
+                                <td colspan="4">
+                                    <input id="btnDatHang" class="btn btn-primary" type="submit" value="Đặt hàng" />
+                                    @Html.ActionLink("Mua tiếp", "Index", "Home", new { @class = "btn btn-success" })
+                                </td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    if (Session["TaiKhoan"] == null)
+                    {
+                        <div class="ThongTinMuaHang">
+                            <table class="table">
+                                <tr>
+                                    <td align="center" colspan="2"><b>Thông tin khách hàng</b></td>
+                                </tr>
+                                <tr>
+                                    <td>Họ tên</td>
+                                    <td>
+                                        @Html.TextBox("TenKH")
+                                        <p style="color: red;" id="TB_TenKH"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Địa chỉ</td>
+                                    <td>@Html.TextArea("DiaChi") <p style="color: red;" id="TB_DiaChi"></p></td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>
+                                        @Html.TextBox("Email")
+
+                                        <p style="color: red;" id="TB_Email"></p>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>Điện thoại</td>
+                                    <td>
+                                        @Html.TextBox("SoDienThoai")
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    
+
+                                </tr>
+                            </table>
+                        </div>
+                    }
+
+                }
+
+
+
+
+
+            </div> <!--End Cart page-->
+
+            <script>
+                $("#btnDatHang").click(function () {
+                    var loi = 0;
+                    if ($("#TenKH").val() == "") {
+                        $("#TB_TenKH").text("Tên kh không được bỏ trống");
+                        loi++;
+                    } else {
+                        $("#TB_TenKH").text("");
+                    }
+                    if ($("#DiaChi").val() == "") {
+                        $("#TB_DiaChi").text("Địa chỉ không được bỏ trống");
+                        loi++;
+
+                    } else {
+                        $("#TB_TenKH").text("");
+                    }
+                    dinhdang = /^[0-9A-Za-z]+[0-9A-Za-z_]*@@[\w\d.]+\.\w{2,4}$/;
+                    KTemail = dinhdang.test($('#Email').val());
+                    if (!KTemail) {
+                        $('#TB_Email').text("Email không hợp lệ");
+                        loi++;
+                    }
+                    if (loi != 0) {
+                        return false;
+                    }
+
+                })
+            </script>
+
+           @* <script type="text/javascript">
+                $(document).ready(function () {
+
+                    var product_price_p1 = 200;
+                    var product_price_p2 = 300;
+                    var total_product_sum = 0;
+
+                    $('.product_quantity_p1, .product_quantity_p2').bind('keyup mouseup change click keydown focus', (function () {
+
+                        var quantity_p1 = $('.product_quantity_p1').val();
+                        var quantity_p2 = $('.product_quantity_p2').val();
+
+                        total_ammount_p1 = quantity_p1 * product_price_p1;
+                        total_ammount_p2 = quantity_p2 * product_price_p2;
+
+                        $('.total_product_sum').html(total_product_sum + "$");
+                        $('.total_ammount_p1').html(total_ammount_p1 + "$");
+                        $('.total_ammount_p2').html(total_ammount_p2 + "$");
+                        total_product_sum = total_ammount_p1 + total_ammount_p2;
+                        $('.total_product_sum').html(total_product_sum + "$");
+                    }));
+                });
+
+            </script>*@
+        </div> <!-- End Container inside Content Area -->
+    </div>
+}
+@*Thiết kế form lưu *@
+
+
+@*Kiểm tra validation qua jquery*@   

@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+@{ decimal TongDoanhThu = decimal.Parse(ViewBag.TongDoanhThu.ToString());
+    TongDoanhThu = TongDoanhThu / 1000;
+
+    }
+<h2>Thống kê số lượng truy cập</h2>
+
+<h3>Số người truy cập: @ViewBag.SoNguoiTruyCap</h3>
+<h3>Số người online: @ViewBag.SoNguoiDangOnline</h3>
+<h3>Tổng doanh thu: @TongDoanhThu.ToString("#,##")K</h3>
+<h3>Tổng đơn đặt hàng: @ViewBag.TongDDH</h3>
+<h3>Tổng thành viên: @ViewBag.TongThanhVien</h3>
+

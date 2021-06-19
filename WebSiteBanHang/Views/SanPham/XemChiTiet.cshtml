@@ -1,0 +1,212 @@
+﻿@using WebSiteBanHang.Models;
+@model SanPham
+    @*Model lúc này chỉ là 1 sản phẩm *@
+
+
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+
+<div class="content-area prodcuts">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li class="active">Digital Camera</li>
+        </ol>
+
+        <div class="single-product">
+            <div class="row" id="">
+                <div class="col-md-6 single-top-left">
+                    <div class="flexslider">
+                        <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                            <ul class="slides" style="width: 1000%; transition-duration: 0s; transform: translate3d(-878px, 0px, 0px);">
+                                <li data-thumb="@Url.Content("~/Content/images/product-slide/" + Model.HinhAnh)" class="clone" aria-hidden="true" style="width: 439px; float: left; display: block;">
+                                    <div class="thumb-image"> <img src="@Url.Content("~/Content/images/product-slide/" + Model.HinhAnh)" data-imagezoom="true" class="img-responsive" alt="" draggable="false">  </div>
+                                </li>
+                                @*<li data-thumb="~/Content/images/products/product_1_front.jpg" class="" style="width: 439px; float: left; display: block;">
+                                    <div class="thumb-image detail_images"> <img src="~/Content/images/products/product_1_front.jpg" data-imagezoom="true" class="img-responsive" alt="" draggable="false"> </div>
+                                </li>
+
+                                <li data-thumb="~/Content/images/products/product_1_side.jpg" class="flex-active-slide" style="width: 439px; float: left; display: block;">
+                                    <div class="thumb-image"> <img src="~/Content/images/products/product_1_side.jpg" data-imagezoom="true" class="img-responsive" alt="" draggable="false"> </div>
+                                </li>
+                                <li data-thumb="~/Content/images/products/product_1_work.jpg" class="" style="width: 439px; float: left; display: block;">
+                                    <div class="thumb-image"> <img src="~/Content/images/products/product_1_work.jpg" data-imagezoom="true" class="img-responsive" alt="" draggable="false">  </div>
+                                </li>
+                                <li data-thumb="~/Content/images/products/product_1_front.jpg" class="clone" aria-hidden="true" style="width: 439px; float: left; display: block;">
+                                    <div class="thumb-image detail_images"> <img src="~/Content/images/products/product_1_front.jpg" data-imagezoom="true" class="img-responsive" alt="" draggable="false"> </div>
+                                </li>*@
+                            </ul>
+                        </div>
+
+                        <ol class="flex-control-nav flex-control-thumbs">
+                        <li><img src="~/Content/images/products/product_1_front.jpg" class="flex-active" draggable="false"></li>
+                        <li><img src="~/Content/images/products/product_1_side.jpg" draggable="false" class=""></li>
+                        <li><img src="~/Content/images/products/product_1_work.jpg" draggable="false" class=""></li>
+                        </ol>
+
+
+
+
+                        <ul class="flex-direction-nav">
+                            <li class="flex-nav-prev"><a class="flex-prev" href="#">Previous</a></li>
+                            <li class="flex-nav-next"><a class="flex-next" href="#">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 single-top-right">
+                    <h3 class="item_name">@Model.TenSP</h3>
+                    <p>Processing Time: Item will be shipped out within 2-3 working days. </p>
+                    <div class="single-rating">
+                        <ul>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            <li class="rating">20 reviews</li>
+                            <li><a href="#">Add your review</a></li>
+                        </ul>
+                    </div>
+                    <div class="single-price">
+                        <ul>
+                            <li class="product-price">$@Model.DonGia</li>
+                            <li><del>$600</del></li>
+                            <li><span class="off">10% OFF</span></li>
+                            <li>Ends on: June,5th</li>
+                            <li><a href="#"><i class="fa fa-gift" aria-hidden="true"></i> Coupon</a></li>
+                        </ul>
+                    </div>
+                    <p class="single-price-text">@Model.MoTa</p>
+                    <form action="#" method="post">
+                        <input type="hidden" name="cmd" value="_cart">
+                        <input type="hidden" name="add" value="1">
+                        <input type="hidden" name="w3ls_item" value="Snow Blower">
+                        <input type="hidden" name="amount" value="540.00">
+                        <button type="submit" class="btn btn-red"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+                        <button class="btn btn-primary"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</button>
+                    </form>
+
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="single-page-icons social-icons">
+                <ul>
+                    <li><h4>Share on</h4></li>
+                    <li><a href="#" class="fa fa-facebook-square icon facebook"> </a></li>
+                    <li><a href="#" class="fa fa-twitter-square icon twitter"> </a></li>
+                    <li><a href="#" class="fa fa-google-plus-square icon googleplus"> </a></li>
+                    <li><a href="#" class="fa fa-rss-square icon rss"> </a></li>
+                </ul>
+            </div>
+
+            <div class="single-product-everything">
+
+                <div class="single-extra-div">
+                    <a data-toggle="collapse" class="pointer main" aria-expanded="true" data-target="#productDescriptionCollapse" aria-controls="#productDescriptionCollapse">
+                        <span class="pull-left title-sidebar"><i class="fa fa-info-circle"></i> Product Description</span>
+
+                        <span class="pull-right"><i class="fa fa-plus"></i></span>
+                        <span class="pull-right"><i class="fa fa-minus"></i></span>
+                        <div class="clearfix"></div>
+                    </a>
+                    <div id="productDescriptionCollapse" class="collapse in collapseDiv">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>  End single product extra div
+
+                <div class="single-extra-div">
+                    <a data-toggle="collapse" class="pointer main" aria-expanded="true" data-target="#productReviewCollapse" aria-controls="#productReviewCollapse">
+                        <span class="pull-left title-sidebar">
+                            <i class="fa fa-check-square-o"></i>
+                            Product Reviews <span class="badge">2</span>
+                        </span>
+
+                        <span class="pull-right"><i class="fa fa-plus"></i></span>
+                        <span class="pull-right"><i class="fa fa-minus"></i></span>
+                        <div class="clearfix"></div>
+                    </a>
+                    <div id="productReviewCollapse" class="collapseDiv collapse in" aria-expanded="true" style="">
+                        <div class="review">
+                            <h4>Polash Rana :</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
+                        </div>
+                        <div class="review">
+                            <h4>Nur Ahmed :</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut </p>
+                        </div>
+                    </div>
+                </div>  End single product extra div
+
+                <div class="single-extra-div">
+                    <a data-toggle="collapse" class="pointer main" aria-expanded="true" data-target="#productHelpCollapse" aria-controls="#productHelpCollapse">
+                        <span class="pull-left title-sidebar"> <i class="fa fa-question-circle"></i> Help </span>
+
+                        <span class="pull-right"><i class="fa fa-plus"></i></span>
+                        <span class="pull-right"><i class="fa fa-minus"></i></span>
+                        <div class="clearfix"></div>
+                    </a>
+                    <div id="productHelpCollapse" class="collapse collapseDiv">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>  End single product extra div
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="services-area">
+        <div class="services">
+            <div class="container">
+                <div class="ftr-toprow">
+                    <div class="col-md-4 ftr-top-grids wow slideInLeft" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10" style="visibility: visible; animation-duration: 1s; animation-delay: 0s; animation-name: slideInLeft;">
+                        <div class="ftr-top-left pull-left">
+                            <i class="fa fa-truck" aria-hidden="true"></i>
+                        </div>
+                        <div class="ftr-top-right">
+                            <h4>FREE DELIVERY</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-4 ftr-top-grids wow slideInUp" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10" style="visibility: visible; animation-duration: 1s; animation-delay: 0s; animation-name: slideInUp;">
+                        <div class="ftr-top-left pull-left">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                        <div class="ftr-top-right">
+                            <h4>CUSTOMER CARE</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-4 ftr-top-grids wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10" style="visibility: visible; animation-duration: 1s; animation-delay: 0s; animation-name: slideInRight;">
+                        <div class="ftr-top-left pull-left">
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        </div>
+                        <div class="ftr-top-right">
+                            <h4>GOOD QUALITY</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Service -->
+
+</div>

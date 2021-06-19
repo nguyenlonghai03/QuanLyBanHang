@@ -1,0 +1,49 @@
+﻿
+@using WebSiteBanHang.Models;
+@model IEnumerable<SanPham>
+
+
+<h1>@Model.First().LoaiSanPham.TenLoai mới nhất</h1>
+
+<div class="row">
+    @foreach (var item in Model.Take(3))
+    {
+        <div class="col-md-3">
+            <div class="product-item">
+                <div class="product-borde-inner">
+                    <a href="product_single.html">
+                        <img src="@Url.Content("~/Content/images/product-slide/" + item.HinhAnh)" class="img img-responsive">
+                    </a>
+
+                    <div class="product-price">
+                        <a href="product_single.html">@item.TenSP</a><br>
+                        <span class="prev-price">
+                            <del>@item.DonGia</del>
+                        </span>
+                        <span class="current-price">
+                            150$
+                        </span>
+                    </div>
+
+                    <a href="cart.html" class="btn btn-cart text-center add-to-cart pull-right">
+                        <i class="fa fa-cart-plus"></i>
+                        Add to cart
+                    </a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div><!-- End Latest products[single] -->
+    }
+
+    <div class="clearfix"></div>
+
+
+
+
+
+</div> <!-- End Latest products row-->
+<a href="products.html" class="btn btn-blue btn-lg pull-right btn-more wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10" style="visibility: hidden; animation-duration: 1s; animation-delay: 0s; animation-name: none;">
+    <span>See More products.. </span>
+</a>
+<div class="clear"></div>
+

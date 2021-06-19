@@ -1,0 +1,16 @@
+﻿@using WebSiteBanHang.Models;
+@model List<ThanhVien>
+@{
+    Layout = null;
+}
+
+@*Duyệt những thằng có cùng loại thành viên vào trong 1 nhóm*@
+@foreach (var groupLTV in Model.GroupBy(n => n.LoaiThanhVien))
+{
+    <div>@groupLTV.Key.TenLoai</div>
+    foreach (var item in groupLTV)
+    {
+        <p>@item.TaiKhoan</p>
+    }
+    <p></p>
+}

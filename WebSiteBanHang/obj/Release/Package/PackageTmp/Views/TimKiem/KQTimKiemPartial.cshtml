@@ -1,0 +1,99 @@
+﻿@model IEnumerable<WebSiteBanHang.Models.SanPham>
+@{
+    int iDem = 1; // Đếm số lượng sp trên trang
+    int iSLSanPhamTrenTrang = 6; // Số lượng sp trên 1 trang
+    int iTrang = 1; // số trang
+}
+
+<div class="all-products">
+    <div class="">
+        <h2 class="title-div wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10" style="visibility: visible; animation-duration: 1s; animation-delay: 0s; animation-name: slideInRight;">Our Latest Products available</h2>
+        <div class="products">
+            <div class="row">
+
+                @foreach (var item in Model.OrderBy(n => n.DonGia))
+                {
+                    if (iDem % iSLSanPhamTrenTrang == 0 && iDem != 0)
+                    {
+                        iTrang++;
+                    }
+                    <div class="@Url.Content("col-md-4 cartKQ Trang" + iTrang.ToString())">
+                        <div class="product-item">
+                            <div class="product-borde-inner">
+                                <a href="product_single.html">
+                                    <img src="@Url.Content("~/Content/images/product-slide/" + item.HinhAnh)" class="img img-responsive">
+                                </a>
+
+                                <div class="product-price">
+                                    <a href="product_single.html">@item.TenSP</a><br>
+                                    <span class="prev-price">
+                                        <del>200$</del>
+                                    </span>
+                                    <span class="current-price">
+                                        @item.DonGia.Value.ToString("#,##")
+                                    </span>
+                                </div>
+
+
+                                <a href="@Url.Action("ThemGioHang", "GioHang", new { @MaSP=item.MaSP, @strURL = Request.Url.ToString() })" class="btn btn-cart text-center add-to-cart pull-right">
+                                    <i class="fa fa-cart-plus"></i>
+                                    Add to cart
+                                </a>
+
+
+                                @Ajax.ActionLink("Thêm giỏ hàng ajax", "ThemGioHangAjax", "GioHang", new { @MaSP = item.MaSP, @strURL = Request.Url.ToString() }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divGioHang", InsertionMode = InsertionMode.Replace }, null)
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div><!-- End Latest products[single] -->
+                    iDem++;
+                }
+
+
+
+
+                <div class="clear"></div>
+
+
+
+
+
+            </div> <!-- End Latest products row-->
+            <a class="btn btn-blue btn-lg pull-right btn-more wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10" style="visibility: visible; animation-duration: 1s; animation-delay: 0s; animation-name: slideInRight;">
+                <span>See More products.. </span>
+            </a>
+            <div class="clear"></div>
+        </div> <!-- End products div-->
+
+        <div class="Trang">
+            @for (int i = 0; i <= iTrang; i++)
+            {
+                <a class="linkTrang" data-sotrang="@Url.Content("Trang"+i)" href="#"></a>
+
+            }
+        </div>
+    </div> <!-- End container latest products-->
+</div>
+
+@*Cho tất cả các trang ẩn hết và chỉ cho item nào thuộc trang 1 hiển thị*@
+<style>
+    .cartKQ {
+        display: none;
+    }
+    .Trang1 {
+
+    }
+</style>
+@*Bước 3 xử lý khi click vào link trang nào thì show ra sp trang đó*@
+<script>
+    $('.linkTrang').click(function () {
+        // Cho tất cả các trang ẩn đi
+        $(".cartKQ").hide();
+
+        // Lấy ra số trang từ thẻ a 
+        var soTrang = $(this).attr("data-sotrang");
+
+        // Gọi nhưngx class nào thuộc sotrang đó thì hiển thị
+        $(@Url.Content("."+ soTrang)).show();
+    })
+</script>
