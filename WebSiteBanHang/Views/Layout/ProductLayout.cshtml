@@ -37,7 +37,7 @@
         <!-- Header part  -->
         <div class="header">
             <!-- Start Top Header -->
-            <div class="top-header">
+            @*<div class="top-header">
                 <div class="top-header-left pull-left">
                     <a href="products.html">Upto 50% Discount today</a>
                 </div>
@@ -74,13 +74,13 @@
                     </div>
                 </div>
                 <div class="clear"></div>
-            </div>
+            </div>*@
             <!-- End Top Header -->
             <!-- Start Header Main, logo, search bar,cart -->
             <div class="header-bottom">
                 <div class="container" style="display: flex !important">
                     <div class="header-logo pull-left">
-                        <a href="index.html">
+                        <a href="@Url.Action("Index", "Home")">
                             <img src="~/Content/images/logo.png" alt="Your Shop Logo" class="img img-responsive">
                         </a>
                     </div>
@@ -146,8 +146,8 @@
                     <div class="col-md-4">
                         <div class="footer-top-address wow slideInLeft" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10" style="visibility: visible; animation-duration: 1s; animation-delay: 0s; animation-name: slideInLeft;">
                             <div class="header-logo" style=" text-align: center;border-bottom: 1px dotted rgba(247, 12, 38, 0.24);">
-                                <a href="index.html">
-                                    <img src="images/logo.png" alt="Your Shop Logo" class="img img-responsive">
+                                <a href="@Url.Action("Index", "Home")">
+                                    <img src="~/Content/images/logo.png" alt="Your Shop Logo" class="img img-responsive">
                                 </a>
                             </div>
                             <div class="clearfix"></div>
@@ -173,20 +173,20 @@
                             <div class="col-md-4">
                                 <h3>Company</h3>
                                 <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="marketplace.html">Marketplace</a></li>
-                                    <li><a href="values.html">Core Values</a></li>
-                                    <li><a href="privacy.html">Privacy Policy</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Marketplace</a></li>
+                                    <li><a href="#">Core Values</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-4 footer-grids">
                                 <h3>Services</h3>
                                 <ul>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="login.html">Returns</a></li>
-                                    <li><a href="faq.html" class="link">FAQ</a></li>
-                                    <li><a href="sitemap.html">Site Map</a></li>
-                                    <li><a href="login.html">Order Status</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#" class="link">FAQ</a></li>
+                                    <li><a href="#">Site Map</a></li>
+                                    <li><a href="#">Order Status</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-4 footer-grids">

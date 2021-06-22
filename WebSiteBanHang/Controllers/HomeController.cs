@@ -55,7 +55,9 @@ namespace WebSiteBanHang.Controllers
                 ViewBag.CauHoi = new SelectList(LoadCauHoi());
 
 
+                tv.MaLoaiTV = 3;
                 db.ThanhViens.Add(tv); // add vào dataset trước
+
                 db.SaveChanges(); // Lấy từ dataset và chuyển qua csdl
                 ViewBag.ThongBao = "Thêm thành công";
 

@@ -23,7 +23,7 @@
                         </span>
                     </div>
 
-                    <a href="cart.html" class="btn btn-cart text-center add-to-cart pull-right">
+                    <a href="@Url.Action("ThemGioHang", "GioHang", new { @MaSP=item.MaSP, @strURL = Request.Url.ToString() })" class="btn btn-cart text-center add-to-cart pull-right">
                         <i class="fa fa-cart-plus"></i>
                         Add to cart
                     </a>
@@ -34,8 +34,6 @@
     }
     <div class="clearfix"></div>
 </div> <!-- End Latest products row-->
-<a href="products.html" class="btn btn-blue btn-lg pull-right btn-more wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10" style="visibility: hidden; animation-duration: 1s; animation-delay: 0s; animation-name: none;">
-    <span>See More products.. </span>
-</a>
+
 <div class="clear"></div>
 
