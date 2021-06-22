@@ -62,7 +62,7 @@ namespace WebSiteBanHang.Controllers
                             // Lấy tên hình ảnh
                             var fileName = Path.GetFileName(HinhAnh[i].FileName);
                             // Lấy hình ảnh chuyển vào thư mục hình ảnh
-                            var path = Path.Combine(Server.MapPath("~/Content/images/product-slide"), fileName);
+                            var path = Path.Combine(Server.MapPath("~/Content/images/product-slide/"), fileName);
                             if (System.IO.File.Exists(path))
                             {
                                 ViewBag.upload = "Hình ảnh đã tồn tại";
@@ -119,12 +119,32 @@ namespace WebSiteBanHang.Controllers
         [HttpPost]
         public ActionResult ChinhSua(SanPham model)
         {
-            
+            SanPham sp = db.SanPhams.SingleOrDefault(n => n.MaSP == model.MaSP);
+
+            sp.TenSP = model.TenSP;
+            sp.DonGia = model.DonGia;
+            sp.NgayCapNhat = model.NgayCapNhat;
+            sp.CauHinh = model.CauHinh;
+            sp.MoTa = model.MoTa;
+            sp.HinhAnh = model.HinhAnh;
+            sp.SoLanMua = model.SoLanMua;
+            sp.SoLuongTon = model.SoLuongTon;
+            sp.LuotXem = model.LuotXem;
+            sp.LuotBinhChon = model.LuotBinhChon;
+            sp.MaNCC = model.MaNCC;
+            sp.MaNSX = model.MaNSX;
+            sp.MaLoaiSP = model.MaLoaiSP;
+            sp.DaXoa = model.DaXoa;
+
+            db.SaveChanges();
+
+
             // Load dropdownlist NCC
             ViewBag.MaNCC = new SelectList(db.NhaCungCaps.OrderBy(n => n.TenNCC), "MaNCC", "TenNCC", model.MaNCC);
             ViewBag.MaLoaiSP = new SelectList(db.LoaiSanPhams.OrderBy(n => n.MaLoaiSP), "MaLoaiSP", "TenLoai", model.MaLoaiSP);
             ViewBag.MaNSX = new SelectList(db.NhaSanXuats.OrderBy(n => n.MaNSX), "MaNSX", "TenNSX", model.MaNSX);
             ViewBag.NgayCapNhat = model.NgayCapNhat.Value.ToString("yyyy-MM-dd");
+
             return View(model);
         }
 

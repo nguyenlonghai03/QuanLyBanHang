@@ -75,46 +75,49 @@
 
 
             <li class="wssearchbar clearfix">
+               
                 <form class="topmenusearch">
-                    <input placeholder="Search Product By Name, Category...">
+                    <input name="sTuKhoa" placeholder="Search Product By Name, Category...">
                     <button class="btnstyle"><i class="searchicon fa fa-search" aria-hidden="true"></i></button>
                 </form>
+              
             </li>
+         
 
             <!-- <li class="wscarticon clearfix"> <a href="#"><i class="fa fa-shopping-basket"></i> <em class="roundpoint">8</em><span class="mobiletext">Shopping Cart</span></a> </li> -->
 
 
             <li class="wsshopmyaccount clearfix">
                 <span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="#" class="wtxaccountlink"><i class="fa fa-align-justify"></i>My Account <i class="fa fa-angle-down"></i></a>
-                                                                                                                                                                              <ul class="wsmenu-submenu">
+                <ul class="wsmenu-submenu">
 
-                                                                                                                                                                                  @*// Session là biến được tạo ra ở mỗi phiên làm việc của người dùng
-        Mỗi người đăng nhập sẽ có 1 sesion riêng và phiên làm việc của họ
-        cũng có biến session riêng và được hủy khi phiên làm việc đó kết thúc*@
-                                                                                                                                                                                  @if (Session["TaiKhoan"] != null && Session["TaiKhoan"] != "")
-                                                                                                                                                                                  {
-                                                                                                                                                                                      
-                                                                                                                                                                                      ThanhVien tv = (ThanhVien)Session["TaiKhoan"];
-                                                                                                                                                                                      <span style="color: red">Chào @tv.HoTen</span>
-                                                                                                                                                                                      @Html.ActionLink("Đăng xuất", "DangXuat", "Home")
-                                                                                                                                                                                  }
-                                                                                                                                                                                  else
-                                                                                                                                                                                  {
-                                                                                                                                                                                      <li><a href="@Url.Action("DangKy","Home")"><i class="fa fa-black-tie"></i>Đăng ký</a></li>
-                                                                                                                                                                                      <li><a href="@Url.Action("DangNhap","Home")"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
-                                                                                                                                                                                  }
-                                                                                                                                                                                  <li><a href="account.html"><i class="fa fa-user"></i>Thông tin cá nhân</a></li>
+                    @*// Session là biến được tạo ra ở mỗi phiên làm việc của người dùng
+                Mỗi người đăng nhập sẽ có 1 sesion riêng và phiên làm việc của họ
+                cũng có biến session riêng và được hủy khi phiên làm việc đó kết thúc*@
+                    @if (Session["TaiKhoan"] != null && Session["TaiKhoan"] != "")
+                    {
 
-
-
-                                                                                                                                                                                  @* <li><a href=""><i class="fa fa-black-tie"></i>Đăng ký</a></li>
-        <li><a href=""><i class="fa fa-sign-in"></i>Đăng nhập</a></li>*@
+                        ThanhVien tv = (ThanhVien)Session["TaiKhoan"];
+                        <span style="color: red">Chào @tv.HoTen</span>
+                        @Html.ActionLink("Đăng xuất", "DangXuat", "Home")
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("DangKy","Home")"><i class="fa fa-black-tie"></i>Đăng ký</a></li>
+                        <li><a href="@Url.Action("DangNhap","Home")"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
+                    }
+                    <li><a href="#"><i class="fa fa-user"></i>Thông tin cá nhân</a></li>
 
 
-                                                                                                                                                                                  <li><a href="account.html#wishlist"><i class="fa fa-heart"></i>My Wishlist</a></li>
-                                                                                                                                                                                  <li><a href="faq.html"><i class="fa fa-question-circle"></i>Help Center</a></li>
-                                                                                                                                                                                  @*<li><a href="login.html"><i class="fa fa-sign-out"></i>Logout</a></li>*@
-                                                                                                                                                                              </ul>
+
+                    @* <li><a href=""><i class="fa fa-black-tie"></i>Đăng ký</a></li>
+                <li><a href=""><i class="fa fa-sign-in"></i>Đăng nhập</a></li>*@
+
+
+                    <li><a href="#"><i class="fa fa-heart"></i>My Wishlist</a></li>
+                    <li><a href="#"><i class="fa fa-question-circle"></i>Help Center</a></li>
+                    @*<li><a href="login.html"><i class="fa fa-sign-out"></i>Logout</a></li>*@
+                </ul>
             </li>
         </ul>
     </nav>
